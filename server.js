@@ -4,6 +4,38 @@ var request = require('request');
 var cheerio = require('cheerio');
 var app     = express();
 
+/*
+// let url = window.location.href;
+
+
+// let json = {
+//   [`${url}`] : {
+//     ['page title'] : pageTitle,
+//     ['is object on page'] : true/false,
+//     ['number of objects'] : 0
+//   }
+// }
+
+let json = [];
+let pageTitle = document.querySelector('title').innerHTML;
+let anchorsInDocument = [].slice.call(document.querySelectorAll('a'));
+
+let linkingPages = anchorsInDocument.map(function(x) {
+  return x.href;
+});
+
+for (var i = linkingPages.length - 1; i >= 0; i--) {
+  let currentURL = linkingPages[i - 1];
+  if([`${currentURL}`] in json){
+    // do nothing
+  } else {
+    json.push({[`${currentURL}`] : { 'visited' : false }});
+  }
+};
+
+console.table(json);
+*/
+
 app.get('/scrape', function(req, res){
   // Let's scrape Anchorman 2
   url = 'http://www.imdb.com/title/tt1229340/';
