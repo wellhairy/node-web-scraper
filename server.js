@@ -16,24 +16,27 @@ var app     = express();
 //   }
 // }
 
-let json = [];
+const rootUrl = stackoverflow.com;
+let json = {};
 let pageTitle = document.querySelector('title').innerHTML;
 let anchorsInDocument = [].slice.call(document.querySelectorAll('a'));
 
 let linkingPages = anchorsInDocument.map(function(x) {
-  return x.href;
+  if(x.hostname.indexOd == rootUrl){
+    return x.href;
+  }
 });
 
 for (var i = linkingPages.length - 1; i >= 0; i--) {
-  let currentURL = linkingPages[i - 1];
+  let currentURL = linkingPages[i];
   if([`${currentURL}`] in json){
     // do nothing
   } else {
-    json.push({[`${currentURL}`] : { 'visited' : false }});
+    json[`${currentURL}`] = { "visited" : false };
   }
 };
 
-console.table(json);
+console.log(json);
 */
 
 app.get('/scrape', function(req, res){
